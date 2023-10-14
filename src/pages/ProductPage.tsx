@@ -27,7 +27,7 @@ export default function ProductPage({navigation}: Props) {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="product-list">
       {products?.length ? (
         <>
           <ProductList products={products} />

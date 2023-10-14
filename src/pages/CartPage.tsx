@@ -4,15 +4,17 @@ import CartItem from '../components/CartItem';
 import {CartItem as CartItemType, RootStackParamList} from '../../types';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useCartPage} from '../hooks/useCartPage';
+import {CART_EMPTY} from '../constants';
 type ProductPageNavigationProp = StackNavigationProp<
   RootStackParamList,
   'CartPage'
 >;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type Props = {
   navigation: ProductPageNavigationProp;
 };
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const CartPage = ({navigation}: Props) => {
+
+const CartPage = () => {
   const {cartItems, handleRemoveFromCart, handleUpdateCartQuantity, total} =
     useCartPage();
   const renderItem = ({item}: {item: CartItemType}) => {
@@ -44,9 +46,8 @@ const CartPage = ({navigation}: Props) => {
         </>
       ) : (
         <View style={styles.emptyStyle}>
-          <Text style={styles.emptyTextStyle}>
-            "Oops! 😬 Your cart is feeling a little lonely. Let's add some
-            goodies to keep it company and put a smile on its face! 😊🛒"
+          <Text style={styles.emptyTextStyle} testID="empty-cart-message">
+            {CART_EMPTY}
           </Text>
         </View>
       )}

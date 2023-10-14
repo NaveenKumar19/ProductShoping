@@ -5,11 +5,10 @@ import {FlatList} from 'react-native';
 import {Product} from '../../types';
 import ProductCard from './ProductCard';
 
-type Props = {
+export type ProductListProps = {
   products: Product[];
 };
-
-export default function ProductList({products}: Props) {
+export default function ProductList({products}: ProductListProps) {
   return (
     <FlatList
       data={products}
